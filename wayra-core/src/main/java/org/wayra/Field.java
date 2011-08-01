@@ -12,7 +12,7 @@ public class Field {
 		this.produce = produce ;
 	}
 
-	public void countCrop(int count) {
+	public void cropCount(int count) {
 		cropCount = count ;
 	}
 
@@ -20,7 +20,7 @@ public class Field {
 		return size;
 	}
 
-	public void countRipeCrop(int ripeCount) {
+	public void ripeCropCount(int ripeCount) {
 		ripeCropCount = ripeCount ;
 	}
 

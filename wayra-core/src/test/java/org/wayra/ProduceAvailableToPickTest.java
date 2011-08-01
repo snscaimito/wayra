@@ -20,8 +20,8 @@ public class ProduceAvailableToPickTest {
 		
 		final Field field = new Field(AreaSize.HECTARE(1), new Produce("Broccoli")) ;
 		final Field samplePlot = new Field(AreaSize.SQUARE_METER(100), new Produce("Broccoli")) ;
-		samplePlot.countCrop(50) ;
-		samplePlot.countRipeCrop(20) ;
+		samplePlot.cropCount(50) ;
+		samplePlot.ripeCropCount(20) ;
 		
 		assertEquals(2000, estimator.getEstimatedHarvestCount(samplePlot, field), 0.0) ;
 	}
