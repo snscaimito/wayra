@@ -2,12 +2,14 @@ package org.wayra;
 
 public class Field {
 
+	private String fieldName ;
 	private AreaSize size ;
 	private Produce produce ;
 	private int cropCount ;
 	private int ripeCropCount ;
 	
-	public Field(AreaSize size, Produce produce) {
+	public Field(String fieldName, AreaSize size, Produce produce) {
+		this.fieldName = fieldName ;
 		this.size = size ;
 		this.produce = produce ;
 	}
@@ -26,6 +28,10 @@ public class Field {
 
 	public int getRipeCropCount() {
 		return ripeCropCount ;
+	}
+
+	public String getFieldName() {
+		return fieldName ;
 	}
 
 }

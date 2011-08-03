@@ -18,8 +18,8 @@ public class ProduceAvailableToPickTest {
 	public void calculateAvailableProduceBasedOnSamplePlot() {
 		CropEstimator estimator = new CropEstimator() ;
 		
-		final Field field = new Field(AreaSize.HECTARE(1), new Produce("Broccoli")) ;
-		final Field samplePlot = new Field(AreaSize.SQUARE_METER(100), new Produce("Broccoli")) ;
+		final Field field = new Field("ABC", AreaSize.HECTARE(1), new Produce("Broccoli")) ;
+		final Field samplePlot = new Field("ABC", AreaSize.SQUARE_METER(100), new Produce("Broccoli")) ;
 		samplePlot.cropCount(50) ;
 		samplePlot.ripeCropCount(20) ;
 		
