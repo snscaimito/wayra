@@ -9,9 +9,9 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class TagCollection {
 
-	public static final String ORIGIN = "ORIGIN" ;
-	public static final String ID = "ID";
-	public static final String CONTENT = "CONTENT";
+	public static final String ORIGIN = "origin" ;
+	public static final String ID = "id";
+	public static final String CONTENT = "content";
 
 	private Map<String, String> tags = new HashMap<String, String>() ;
 	

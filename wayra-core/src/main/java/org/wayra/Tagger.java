@@ -12,11 +12,11 @@ public class Tagger {
 		this.writer = writer ;
 	}
 
-	public void associateWithOrigin(Field originatingField) {
+	public void associateWithOrigin(String originatingFieldName) {
 		Map<String, TagCollection> tagCollections = reader.readTags() ;
 		
 		for (TagCollection tagCollection : tagCollections.values()) {
-			tagCollection.set(TagCollection.ORIGIN, originatingField.getFieldName()) ;
+			tagCollection.set(TagCollection.ORIGIN, originatingFieldName) ;
 		}
 
 		writer.writeTags(tagCollections) ;

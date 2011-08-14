@@ -21,7 +21,7 @@ public class AssociateShippingBoxesWithOriginTest {
 	@Test
 	public void associateBoxesWithOriginatingField() throws Exception {
 		final Produce produce = new Produce("Broccoli") ;
-		final Field originatingField = new Field("ABC", AreaSize.HECTARE(1), produce) ;
+		final String originatingFieldName = "ABC" ;
 		final Map<String, TagCollection> tags = simulateReadingTags(loadOfBoxes(20, produce)) ;
 		
 		TagReader reader = new FakeTagReader(tags) ;
@@ -30,9 +30,9 @@ public class AssociateShippingBoxesWithOriginTest {
 
 		// an event is triggered by the trailer entering the gate
 		// we assume manual input of the origin
-		tagger.associateWithOrigin(originatingField) ;
+		tagger.associateWithOrigin(originatingFieldName) ;
 		
-		verifyOriginTags(tags, originatingField) ;
+		verifyOriginTags(tags, originatingFieldName) ;
 	}
 
 	private Map<String, TagCollection> simulateReadingTags(Collection<ShippingBox> trailerLoad) {
@@ -46,9 +46,9 @@ public class AssociateShippingBoxesWithOriginTest {
 	}
 
 	private void verifyOriginTags(Map<String, TagCollection> tags,
-			Field originatingField) {
+			String originatingFieldName) {
 		for (TagCollection tagCollection : tags.values()) {
-			assertEquals(originatingField.getFieldName(), tagCollection.get(TagCollection.ORIGIN)) ;
+			assertEquals(originatingFieldName, tagCollection.get(TagCollection.ORIGIN)) ;
 		}
 	}
 

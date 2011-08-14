@@ -12,7 +12,7 @@ end
 Given /^there is a trailer loaded with "([^"]*)" boxes of "([^"]*)"$/ do |no_boxes, product|
   @trailer = []
   (1..20).each do |box|
-    @trailer.push :id => "box-#{box}", :product => product
+    @trailer.push :id => "box-#{box}", :content => product
   end
 end
 
