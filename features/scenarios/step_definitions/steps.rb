@@ -15,32 +15,26 @@ When /^the trailer came from the "([^"]*)" field$/ do |origin|
 end
 
 Then /^all boxes are associated with the "([^"]*)" field$/ do |origin|
-  File.open(RFID_FILE, "r") do |rfid_file|
-    box_tags = JSON.parse rfid_file.read
+  box_tags = current_rfid_tags RFID_FILE
 
-    box_tags.each do |box|
-      box_origin = box['origin']
-      fail "Incorrect origin tag. Expected #{origin} but got #{box_origin}" unless origin.eql?(box_origin)
-    end
+  box_tags.each do |box|
+    box_origin = box['origin']
+    fail "Incorrect origin tag. Expected #{origin} but got #{box_origin}" unless origin.eql?(box_origin)
   end
 end
 
 When /^the content tag for all boxes is "([^"]*)"$/ do |content|
-  File.open(RFID_FILE, "r") do |rfid_file|
-    box_tags = JSON.parse rfid_file.read
+  box_tags = current_rfid_tags RFID_FILE
 
-    box_tags.each do |box|
-      box_content = box['content']
-      fail "Incorrect content tag. Expected #{content} but got #{box_content}" unless content.eql?(box_content)
-    end
+  box_tags.each do |box|
+    box_content = box['content']
+    fail "Incorrect content tag. Expected #{content} but got #{box_content}" unless content.eql?(box_content)
   end
 end
 
 When /^"([^"]*)" boxes have been tagged$/ do |no_boxes|
-  File.open(RFID_FILE, "r") do |rfid_file|
-    box_tags = JSON.parse rfid_file.read
+  box_tags = current_rfid_tags RFID_FILE
 
-    number_of_boxes = box_tags.size
-    fail "Number of tagged boxes incorrect. Counted #{number_of_boxes} but expected #{no_boxes}" if number_of_boxes != no_boxes.to_i
-  end
+  number_of_boxes = box_tags.size
+  fail "Number of tagged boxes incorrect. Counted #{number_of_boxes} but expected #{no_boxes}" if number_of_boxes != no_boxes.to_i
 end
