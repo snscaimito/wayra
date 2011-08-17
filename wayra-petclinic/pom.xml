@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>wayra</artifactId>
+		<groupId>org.wayra</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>wayra-petclinic</artifactId>
+	<packaging>war</packaging>
+	<name>wayra-petclinic Tapestry 5 Application</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.tapestry</groupId>
+			<artifactId>tapestry-core</artifactId>
+			<version>${tapestry-release-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>wayra-petclinic</finalName>
+		<plugins>
+			<!-- Run the application using "mvn jetty:run" -->
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.9</version>
+				<configuration>
+					<!-- Log to the console. -->
+					<requestLog implementation="org.mortbay.jetty.NCSARequestLog">
+						<!-- This doesn't do anything for Jetty, but is a workaround for a 
+							Maven bug that prevents the requestLog from being set. -->
+						<append>true</append>
+					</requestLog>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<!-- Adds a report detailing the components, mixins and base classes defined 
+			by this module. -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tapestry</groupId>
+				<artifactId>tapestry-component-report</artifactId>
+				<version>${tapestry-release-version}</version>
+				<configuration>
+					<rootPackage>org.wayra.petclinic</rootPackage>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<properties>
+		<tapestry-release-version>5.2.6</tapestry-release-version>
+	</properties>
+</project>
